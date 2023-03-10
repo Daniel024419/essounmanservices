@@ -31,7 +31,7 @@ nav{
   position: fixed;
 
 /* here */
- z-index: 1;
+ z-index: 3;
 }
 nav .logo{
   color: #fff;
@@ -252,7 +252,7 @@ footer{
     width: 100%;
     bottom: 0;
     left: 0;
-    z-index: -3 !important;
+    z-index: 1 !important;
   }
   footer::before{
     content: '';
@@ -526,11 +526,11 @@ footer{
     .main-heading {
         opacity: 1;
         width: 100%;
-        height:250px;
-        font-size: 3rem;
+        height:260px;
+        font-size: 2rem;
         padding: 59px 10px;
         margin-top: 50px;
-        top: 4%;
+        top: 3%;
         left: 3%;
         background:linear-gradient(to right ,#184070,#363170,#184070);
         color: #FFFFFF;
@@ -539,7 +539,7 @@ footer{
       }
       .main-heading::first-letter{
         color: #0e5cbb ;
-        font-size: 4rem !important ;
+        font-size: 3rem !important ;
         }
 .main-content{
     display: flex;
@@ -584,7 +584,7 @@ width */
 }
 .columns {
     float: left;
-    width: 23.65%;
+    width: 23.40%;
     padding: 0px;
     /* border: 1px solid #ccc; */
     /* border-radius: 7px; */

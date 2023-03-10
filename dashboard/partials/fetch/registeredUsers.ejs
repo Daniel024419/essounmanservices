@@ -1,0 +1,142 @@
+  
+					<style>
+                        .row{
+                    width: 120%;
+                    }
+                    @media screen and (max-width:800px) {
+                    .row{
+                    width: auto !important;
+                    }
+                    th,td{
+                    font-size: 12.2px;
+                    }
+                    }
+                    </style>
+                                        <div class="row">
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">
+                                        Registered Users (<%= result_users_admin.length %> )  
+                                        <!-- <span style="padding-left: 20px;"><a href="/truncate">Empty Users</a></span></h5> -->
+ 
+								</div>
+                                <div class="card-header">
+
+
+                                    <form action="/dashboard/registered-users" method="get">                                                    <div class="card">
+                                                        
+                                        <div class="card-body">
+                                            <% if(search!=undefined) {%>
+                                                <input type="text"   
+                                                value="<%=search.searchInput%>" 
+                                                class="form-control" 
+                                                name="searchInput" 
+                                                placeholder="Enter search here and press enter key">
+                                         
+                                                <% } %>
+                                                 
+                                        </div>
+                                    </div>
+
+                                    </form>
+                                
+ 
+                                  <% if(result_users_admin!=undefined){ %> 
+                                            <% 
+                                               if(result_users_admin.length==0) {%> 
+                                                <br> <center><h3 style="color: red;">No returned results for the search</h3></center><br>
+                                            <% } %>   
+                                          <%   }%>
+								  </div>
+								<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>#</th>
+                                            <!-- <th>User Id</th> -->
+                                            <th class="d-none d-xl-table-cell">Userame</th>
+                                            <th class="d-none d-xl-table-cell">House Tel</th>
+                                            <th>Tel</th>
+                                            <th class="d-none d-xl-table-cell">Region</th>
+                                            <th >Address</th>
+                                            <th class="d-none d-xl-table-cell">House No.</th>
+                                            <th class="d-none d-xl-table-cell">Email</th>
+                                            <th class="d-none d-xl-table-cell">Password</th>
+                                            <th >Date</th>
+                                            <th>Action?</th>
+                                            <!-- <th>Response</th> -->
+											<!-- <th class="d-none d-xl-table-cell">End Date</th>
+											<th>Status</th>
+											<th class="d-none d-md-table-cell">Assignee</th> -->
+										</tr>
+									</thead>
+									<tbody>
+										 
+                                        <% if(result_users_admin!=undefined) {%> 
+
+                                        <% for( let index = 0; index < result_users_admin.length; index++ ) { %>
+
+
+                                            <tr>
+                                                <td><%= result_users_admin[index].id%></td>
+                                                <!-- <td><%= //result_users_admin[index].user_id%></td> -->
+                                                 <td class="d-none d-xl-table-cell"><%= result_users_admin[index].username%></td>
+                                                <td class="d-none d-xl-table-cell"> <a href="<%= result_users_admin[index].tel_house%>"><i class="align-middle" data-feather="phone-call"></i></a> </td>
+                                                <td> <a href="tel:<%= result_users_admin[index].telephone%>"><i class="align-middle" data-feather="phone-call"></i></a> </td>
+                                                <td class="d-none d-xl-table-cell"><%= result_users_admin[index].region%></td>
+                                                <td><%= result_users_admin[index].address%></td>
+                                                <td class="d-none d-xl-table-cell"><%= result_users_admin[index].house_no%></td>
+                                                <td class="d-none d-xl-table-cell"><%= result_users_admin[index].email%></td>
+                                                <td class="d-none d-xl-table-cell"><%= result_users_admin[index].password%></td>
+                                                <td ><%= result_users_admin[index].date_created%></td>
+                                                 <!-- <td><%= //result_users_admin[index].response%></td> -->
+                                                
+                                                 <td>
+                                                    <span class="badge " style="background-color: rgb(236, 19, 4);padding: 10px;">
+                                                        <a href="#" onclick="warn();"
+                                                             style="color: white;padding: 2px;text-decoration: none;">Del</a>
+                                                    </span>
+                                                </td>
+                                                <script>
+                                                    function warn(){
+                                                      const  conf= confirm('Do you want to delete this user?');
+                                                      if(conf==true){
+                                                        window.location.href='/delete-users/<%=result_users_admin[index].id%>';
+                                                        return true;
+                                                      }
+                                                      else{
+                                                        return false;
+                                                      }
+                                                    }
+                                                </script>
+                                                <!-- <td class="d-none d-xl-table-cell">01/01/2021</td>
+                                                <td class="d-none d-xl-table-cell">31/06/2021</td>
+                                                <td><span class="badge bg-warning">In progress</span></td>
+                                                <td class="d-none d-md-table-cell">William Harris</td> -->
+                                            </tr>
+                                        <% } %>
+
+
+                                        <% } else{%>  
+
+                                            <tr colspan="4">
+                                                <td class="d-none d-md-table-cell">You do not have any users yet..</td>
+                                            </tr>
+                                            <%  }%> 
+
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						 
+					</div>
+
+			 
+
+	 
+
+ 
+ 

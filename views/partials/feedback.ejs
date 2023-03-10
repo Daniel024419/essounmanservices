@@ -1,0 +1,62 @@
+<section class="signup">
+    <div id="id03" class="modal">
+
+        <form class="modal-content animate"
+        action="/feedback/add" method="post">
+        <div class="imgcontainer">
+        <span onclick="document
+        .getElementById('id03')
+        
+        .style.display='none'"
+        class="close" title="Close Modal">
+            &times;</span>
+        
+            </div>
+        
+        
+         <div class="container">
+
+          <label><b>Email</b></label>
+          <input type="email" placeholder=
+          "Enter email"
+          name="email" required>
+       
+
+        <label><b>Message</b></label>
+    
+    <textarea name="message" width="100%" id="message" cols="149" rows="5" placeholder="type your message here."></textarea>
+    <button type="submit" class="btnlogin">Send</button>
+   
+        </div>
+        
+        
+         <div class="container"
+         style="background-color:#f1f1f1">
+         <button type="button"
+         onclick="document.getElementById
+         ('id03').style.
+        
+         display='none'" class="cancelbtn btnlogin">
+         Cancel
+        </button>
+         
+          
+          </div>
+          </form>
+        </div>
+        
+        <script>
+        
+        // Get the modal 
+        var modal = document.getElementById
+        ('id03');
+        
+        // When the user clicks anywhere
+        //outside of the modal, close it 
+        window.onclick = function(event) {
+            if (event.target == modal) {
+             modal.style.display = "none";
+            }
+        }
+        </script>
+        </section>

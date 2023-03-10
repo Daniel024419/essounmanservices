@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <%- include('./partials/title.ejs'); %> 
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+<!-- nav -->
+<section id="menu">
+    <!-- including nav -->
+    <%- include("./partials/nav.ejs"); %>
+</section>
+<!-- end -->
+<!-- heading -->
+  <section  id="bg-slider">
+    <%- include("./partials/heading.ejs"); %>
+        
+  </section>
+<!-- end -->
+
+<section id="services">
+  
+    <div class="heading">
+    <h2>Orders</h2>
+    </div>
+    <style>
+        .frm-control{
+            display: flex !important;
+            flex-direction: row !important;
+            margin: 5% 5%;  
+            justify-content: center;     
+        }
+        .submit-btn{
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: rgb(88, 84, 84);
+        }
+        .submit-btn:hover{
+            cursor: pointer;
+            border: 1px solid rgb(123, 121, 121);
+        }
+    </style>
+    
+        <span class="frm-control">
+        <form action="/search-order" method="get">
+
+     <input type="email" placeholder="Enter ypur email..." name="email" required >
+     <input type="text" placeholder="Enter order id...." name="bookingId" required>
+     <input type="submit" value="Search" class="submit-btn">
+        </form>
+    </span>
+  
+    
+    <%- //include("./partials/trackorders.ejs"); %>
+</section>
+
+    <!-- end -->
+<!-- accordion -->
+<section id="accordion">
+    <%-// include('./partials/testimonial.ejs'); %> 
+</section>
+<!-- end -->
+<!-- login modal -->
+<section class="login">
+    <!-- including signup modal -->
+  </section>
+<!-- end -->
+<!-- signup -->
+<section id="signup">
+    <!-- including sign up -->
+  
+</section>
+<!-- feedback -->
+<section id="feedback">
+<%- include("./partials/feedback.ejs"); %>
+</section>
+<!-- footer -->
+<section id="footer">
+    <!-- including the footer -->
+    <%- include("./partials/footer.ejs"); %>
+</section>
+
+</body>
+</html>

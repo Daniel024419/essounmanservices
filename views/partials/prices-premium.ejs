@@ -1,0 +1,82 @@
+<div class="container-gallery" style="margin-bottom: -69px;margin-top: -20px;">
+    <div class="search-box">
+     
+        <form action="/package-pro" method="get">
+            <i class="fa fa-search" style="padding-top: 12px;"></i>
+             <% if(search!=undefined) {%>
+            <input type="text" name="types"   value="<%=search.types%>"
+              placeholder="Search a cleaning place and press enter key">
+               <% } %>  
+            
+        </form>
+       
+    </div></div> 
+    <% if(premiumData.length==0) {%> 
+        <br> <center><h3 style="color: red;">No returned results for the search</h3></center><br>
+         <% } %> 
+<!-- 1 -->
+<% if(premiumData!=undefined) {%> 
+<% for( let index = 0; index < premiumData.length; index++ ) { %>
+    <div class="columns">
+        <ul class="price">
+            
+        <li class="header"><%= premiumData[index].package_type %></li>
+        <table width="100%" class="table-service">
+                <th>Price</th>
+                <th>Type</th>
+                <tr>
+                    <% //service.price.forEach(price => { %>
+     <td><li class="grey"> &#8373 <%=premiumData[index].price %>.00</li></td>
+                
+                    <% //}) %>
+                
+                
+                <td><li class="grey"><%= premiumData[index].types %></li></td>
+                </tr>
+                <!-- av -->
+                <tr class="addons"><th colspan="2" style="text-align: center;">Availibilty</th></tr>
+                 
+                <tr> 
+               <td> <li class="grey"><i class="fa fa-clock"></i></li></td>
+               <td><li class="grey"> 24 / 7</li></td>
+               </tr>
+               
+               <tr class="addons"><th colspan="2" style="text-align: center;">Accuracy</th></tr>
+                 <!--ac  -->
+             <tr> 
+            <td> <li class="grey"><i class="fa fa-clock"></i></li></td>
+            <td><li class="grey"> 100%</li></td>
+            </tr>
+            </table>
+       
+          <li class="grey">
+            <% if(businessinfo!=undefined) {%> 
+                <% for( let index = 0; index <=0; index++ ) { %>
+                 
+               <a href="tel:<%= businessinfo[index].phone %>" class="button">
+                <i class="fa fa-phone"></i>
+                Call
+              </a>
+              <% } %> 
+              <% } %> 
+    
+            <a href="/booking/premium/<%=premiumData[index].id;%>" class="button">
+                <i class="fa fa-book"></i> book</a>
+            </li>
+         
+        
+         
+          
+        </ul>
+    </div> 
+    <% } %> 
+    
+        
+    <% } else{ %> 
+        <script>
+            //window.location.href='/';
+            <center><h1>No post published yet</h1></center>
+        </script>
+        <% } %>  
+
+     

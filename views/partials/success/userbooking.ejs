@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+      <body>
+  <dialog open class="dialog">
+      <h1> Booking sent.. <br>Check your email for comfirmation..</h1>
+      <form method='dialog'>
+      <button id='ok'class="btn"   onclick='hide();'>Okay</button>
+      </form>
+  </dialog> 
+      </body>
+      </html>
+      <script>
+      function hide(){
+      window.location.href='/orders';
+      }
+               </script>
+      
+               <style>
+                  body{
+                      background: white;
+                      justify-content: center;
+                      display: flex;
+                  }
+                  dialog{
+                      border: 1px solid #ccc !important;
+                       width: 50%;
+                       height: 38%;
+                       display: flex;
+                       justify-content: center;
+                       flex-direction: column;
+                       text-align: center;
+                       box-shadow: 2px 2px 9px rgb(196, 192, 192);
+                       margin-top: 10%;
+                    }
+                  
+      .btn {
+          background-color: #48d1cc;
+          color: white;
+          padding: 10px 10px;
+          margin: 4px 0;
+          border: none;
+          cursor: pointer;
+          width: 20%;
+      }
+      .btn:hover{
+          box-shadow: 2px 2px 9px rgb(195, 190, 190);
+      }
+       h1{
+          color: green;
+       }
+       @media screen and (max-width:900px) {
+          dialog{
+                      border: 1px solid #ccc !important;
+                       width: 70%;
+                       height: 30%;
+                       display: flex;
+                       justify-content: center;
+                       flex-direction: column;
+                       text-align: center;
+                       box-shadow: 2px 2px 9px rgb(196, 192, 192);
+                      margin-top: 34%;
+      }
+      .btn {
+          background-color: #48d1cc;
+          color: white;
+          padding: 10px 10px;
+          margin: 4px 0;
+          border: none;
+          cursor: pointer;
+          width: 30%;
+      }
+      h1{
+          font-size: 16px;
+      }
+       }
+               </style>

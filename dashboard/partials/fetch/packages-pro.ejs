@@ -1,0 +1,124 @@
+  
+					<div class="row">
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+                                <div class="card-header">
+                                    <% if(result_package_pro_admin!=undefined) {%> 
+									<h5 class="card-title mb-0">Packages Basic (<%= result_package_pro_admin.length %> )</h5>
+								<%  }%> 
+                                </div>
+                                 <form action="/package/pro/add" method="post">
+                                    <div class="card">
+                                        
+                                        <div class="card-body">
+
+                                            <input type="number" required class="form-control" name="price" placeholder="Enter price here">
+                                             <input type="text" required class="form-control" name="type" placeholder="Enter type name here">
+                                            <input type="text" required class="form-control" readonly name="package_type" value="Pro">
+                                            <input type="text" required class="form-control" name="addons" placeholder="Enter addons here">
+                                              
+                                           
+                                            <input type="submit" class="submit" value="Add">
+                                            <style>
+                                                .submit{
+                                                    width:60px;
+                                                    margin-top: 20px;
+                                                    border: 1px solid #ccc;
+                                                    padding: 3px 9px;
+                                                    border-radius: 2px;
+                                                }
+                                                .form-control{
+                                                    margin-top: 10px;
+                                                }
+                                            </style>
+
+                                        </div>
+                                    </div>
+
+                                </form> 
+								<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>#</th>
+                                            <!-- <th>User Id</th> -->
+        
+                                            
+                                            <th>Price</th>
+                                            <th>Type</th>
+                                             
+                                            <th>Package</th>
+                                            <th>Add-ons</th>
+                                            <th>Action</th>
+                                           
+                                            
+										</tr>
+									</thead>
+									<tbody>
+										 
+                                        <% if(result_package_pro_admin!=undefined) {%> 
+
+                                        <% for( let index = 0; index < result_package_pro_admin.length; index++ ) { %>
+
+                                            <tr>
+                                                <td><%= result_package_pro_admin[index].id%></td>
+                                                <td><%= result_package_pro_admin[index].price%></td>
+                                                 <td><%= result_package_pro_admin[index].types%></td>
+                                                 <td><%= result_package_pro_admin[index].package_type%></td>
+                                                 <td><%= result_package_pro_admin[index].addons%></td>
+
+                                                 
+                                                <td>
+                                                    <span class="badge " style="background-color: rgb(236, 19, 4);padding: 10px 12px;">
+                                                        <a href="#" onclick="warn();"
+                                                             style="color: white;padding: 3px;text-decoration: none;"> Del</a>
+                                                    </span>
+                                                    <span class="badge " style="background-color: rgb(3, 130, 12);padding: 10px 12px;">
+                                                        <a href="/edit-package/pro/<%=result_package_pro_admin[index].id%> "
+                                                             style="color: white;padding: 2px;text-decoration: none;">Edit</a>
+                                                    </span>
+                                                </td>
+                                                
+                                                <script>
+                                                    function warn(){
+                                                      const  conf= confirm('Do you want to delete this package?');
+                                                      if(conf==true){
+                                                        window.location.href='/delete-package/pro/<%=result_package_pro_admin[index].id%>';
+                                                        return true;
+                                                      }
+                                                      else{
+                                                        return false;
+                                                      }
+                                                    }
+
+                                                    
+                                                </script>
+                                                <!-- <td class="d-none d-xl-table-cell">01/01/2021</td>
+                                                <td class="d-none d-xl-table-cell">31/06/2021</td>
+                                                <td><span class="badge bg-warning">In progress</span></td>
+                                                <td class="d-none d-md-table-cell">William Harris</td> -->
+                                            </tr>
+                                        <% } %>
+
+
+                                        <% } else{%>  
+
+                                            <tr colspan="4">
+                                                <td class="d-none d-md-table-cell">You do not have any packages yet..</td>
+                                            </tr>
+                                            <%  }%> 
+
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						 
+					</div>
+
+			 
+
+	 
+
+ 
+ 

@@ -1,0 +1,109 @@
+<nav>
+
+  <% if(businessinfo!=undefined) {%> 
+    <% for( let index = 0; index < businessinfo.length; index++ ) { %><div class="logo"><%= businessinfo[index].name %></div> <% } }%> 
+
+    <input type="checkbox" id="click">
+    <label for="click" class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <ul>
+      <li id="li"><a class="active" id="a" href="/">Home</a></li>
+      <li id="li"><a href="/about" id="a">About</a></li>
+      <li id="li"><a href="/contact" id="a">Contact</a></li>
+      <!-- sevices -->
+
+      <li id="li"><a href="/services"id="a">Services</a></li>
+      
+      <li id="li"><a href="/packages"id="a">Packages</a></li>
+      
+      <!-- end -->
+      <li id="li"><a href="/gallery" id="a">Gallery</a></li>
+
+    <% if(currentUser!=undefined){ %> 
+      <style>
+   
+nav ul li a{
+  padding: 8px 5px;
+ 
+}
+
+        </style>   
+         <!--  -->
+      <li id="li"> 
+        <a href="#" id="a"><!-- log in btn -->
+       <apan onclick="document.getElementById('id03').style.display='block'"
+          style="width:auto" >Comment
+       </span>
+     </a>
+   </li>
+   <% } %> 
+
+<% if(currentUser==undefined){ %>    
+  
+   
+
+    <li id="li"><a href="/account" id="a"><i class="fa fa-user-circle"></i> Account</a></li>
+ 
+<% }else{ %>
+ 
+  <% } %>  
+<% //if(currentUser==undefined) {%> 
+  <!-- <li>  -->
+    <!-- <a href="/dashboard" id="a">
+     
+   <apan 
+      style="width:auto" >Admin
+   </span>
+ </a>
+</li> -->
+
+<% //} %> 
+<!-- end -->
+<% if(currentUser!=undefined){ %> 
+<li> 
+  <span class="chip">
+  
+ <span>
+<!-- user pic -->
+<span class="userprofile">
+<a href="/user-profile"> 
+ <img src="/public/pictures/uprofile2.webp" alt="Person"
+  width="96" height="96">
+  
+  <!-- user account-->
+<span class="uname"> <%= userOrders.User_name %></span>
+</a></span>
+  <!-- cart -->
+ <span class="cart-cart">  <a href="/orders"> 
+  <i class="fa fa-cart-plus" aria-hidden="true" id="cart">
+  <span class="cart-container">
+      <% if(userOrders!=undefined) {%> 
+    <%=userOrders.order_length %>
+    <% } else{%>
+      0
+      <% } %> 
+    </span></a></i>
+  <!-- logout -->
+   </span>
+   <span class="cart-logout log " id="logout">
+  <a href="/logout" class="logout"> <span>
+    <i class="fas fa-sign-out-alt" aria-hidden="true"></i> 
+   
+     
+  </span>
+  
+  </a>
+  </span>
+</span>  
+</span> 
+</li>
+<% } %> 
+ 
+</ul>
+</nav>
+
+
+
+
+

@@ -1,0 +1,121 @@
+<!-- 1 -->
+
+<% if(packageData!=undefined) {%> 
+<% for( let index = 0; index < packageData.length; index++ ) { %>
+
+
+    <div class="columns">
+        <ul class="price" >
+            
+            <%  if (packageData[index].package_type=="Basic"){%> 
+
+        <li class="header" id="Basic"><%= packageData[index].package_type %></li>
+        
+            <% } %> 
+            <%  if (packageData[index].package_type=="Pro"){%> 
+
+                <li class="header" id="Pro"><%= packageData[index].package_type %></li>
+                
+                    <% } %>   
+                    <%  if (packageData[index].package_type=="Premium"){%> 
+
+                        <li class="header" id="Premium"><%= packageData[index].package_type %></li>
+                        
+                            <% } %> 
+                            <style>
+                                #Premium{
+                                    background-color: rgb(245, 209, 6);
+                                }
+                                #Pro{
+                                    background-color: #04dfd8;
+                                    
+                                }
+                                #Basic{
+                                    background-color: #010006;
+                                    color: white;
+                                }
+                            </style>
+                            <!--  -->
+
+        <table width="100%" class="table-service" border="0">
+                <th>Price Range</th>
+                <th>Type</th>
+                <tr>
+               
+        <td>
+        <li class="grey">
+         &#8373 <%=packageData[index].max_price +".00 - "+packageData[index].min_price %>.00</li>
+        </td>      
+                <td>
+                    <li class="grey"><%= packageData[index].type %> </li></td>
+                </tr>
+        <tr class="addons"><th colspan="2" style="text-align: center;">Availibilty</th></tr>
+                 
+             <tr> 
+            <td> <li class="grey"><i class="fa fa-clock"></i></li></td>
+            <td><li class="grey"> 24 / 7</li></td>
+            </tr>
+            <!-- ac -->
+            <tr class="addons"><th colspan="2" style="text-align: center;">Accuracy</th></tr>
+            <td> <li class="grey"><i class="fa fa-clock"></i></li></td>
+                <td><li class="grey"> 100%</li></td>
+
+            </tr>
+            
+            </table>
+        <li class="grey" id="btn-more">
+            <a href="<%=packageData[index].package_links%> " class="button">
+            View More</a>
+            </li>
+        
+        </li>
+         
+          
+        </ul>
+    </div> 
+    <% } %> 
+    
+    <% } else{ %> 
+        <script>
+           // window.location.href='/';
+        </script>
+        <center><h1>No published packages</h1></center>
+    <% } %>  
+
+    <style>
+ 
+/* Creates three columns of equal
+width */
+.columns {
+float: left;
+width: 31.8%;
+padding: 0px;
+ 
+border-radius: 7px;
+margin: 15px 10px 10px 10px;
+}
+ 
+ .header{
+    font-weight:700;
+ }
+ 
+.price .grey {
+ font-size: 20px;
+}
+ 
+/* Changes the width of the three
+columns to 100% (to stack horizontally
+on small screens) */
+@media only screen and
+(max-width: 800px) {
+.columns {
+width: 95%;
+/* border: 1px solid #ccc; */
+border-radius: 7px;
+margin:2.5%;
+border-radius: 7px;
+  
+
+}
+}
+  </style>

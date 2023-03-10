@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+	 <%- include('../partials/head.ejs') %>
+ </head>
+
+<body>
+	
+	<div class="wrapper">
+
+
+		<!-- nav -->
+		<%- include('../partials/nav.ejs') %>
+
+
+		<div class="main">
+			<!-- top nav -->
+			<%- include('../partials/topnav.ejs') %>
+         <!--  -->
+			<main class="content">
+				<div class="container-fluid p-0">
+
+					<h1 class="h3 mb-3"><strong>Dashboard > Packages > Edit</strong> </h1>
+          <!-- orders -->
+		  <%- include('../partials/fetch/package_edit_pro.ejs') %>
+<!--  -->
+				</div>
+			</main>
+
+			<footer>
+				<!-- top nav -->
+			<%- include('../partials/footer.ejs') %>
+			</footer>
+		</div>
+	</div>
+
+ 
+	
+ 
+
+</body>
+
+</html>
+ 

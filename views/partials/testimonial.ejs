@@ -1,0 +1,39 @@
+<section>
+    <button class="accordion">Tiger
+    </button>
+    <div class="panel">
+    <p>The tiger is the largest cat
+    species, most recognisable for their
+    pattern of dark vertical stripes on
+    reddish-orange fur with a lighter
+    underside.</p>
+    </div>
+    <button class="accordion">Lion</button>
+    <div class="panel">
+    <p>The lion is one of the big cats
+    in the genus Panthera and a member of
+    the family Felidae.The commonly used
+    term African lion collectively denotes
+    the several subspecies in Africa.</p>
+    </div>
+    <button class="accordion">Cheetah
+    </button>
+    <div class="panel">
+    <p>The cheetah, also known as the
+    hunting leopard, is a big cat that
+    occurs mainly in easternand southern
+    Africa and a few parts of Iran</p>
+    </div>
+    <script>
+        var acc = document
+.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+acc[i].onclick = function(){
+this.classList.toggle("active");
+this.nextElementSibling.classList
+.toggle("show");
+}
+}
+    </script>
+</section>

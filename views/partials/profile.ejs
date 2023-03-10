@@ -1,0 +1,163 @@
+ 
+<body>
+	
+	<center>
+
+	
+	<div class="wrapper">
+		 
+
+		<div class="main">
+			 
+
+			<main class="content">
+				<div class="container-fluid p-0">
+
+					<div class="row">
+						<div class="col-md-4 col-xl-3">
+							<div class="card mb-3">
+								<div class="card-header">
+ 								</div>
+								<div class="card-body text-center">
+									<img src="/public/pictures/uprofile.jpg" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+									<h2 class="card-title mb-0">     <% if(userSession!=undefined) {%>    <%= currentUserInfo.username %> <% } %> 
+                                    </h2>
+									<div class="text-muted mb-2">User</div>
+
+									<!-- <div>
+										<a class="btn btn-primary btn-sm" href="#">Follow</a>
+										<a class="btn btn-primary btn-sm" href="#"><span data-feather="message-square"></span> Message</a>
+									</div> -->
+								</div>
+								 
+								<!-- <hr class="my-0" />
+								<div class="card-body">
+									<h5 class="h6 card-title">About</h5>
+									<ul class="list-unstyled mb-0">
+										<li class="mb-1"><span data-feather="home" class="feather-sm me-1"></span> Lives in <a href="#">San Francisco, SA</a></li>
+
+										<li class="mb-1"><span data-feather="briefcase" class="feather-sm me-1"></span> Works at <a href="#">GitHub</a></li>
+										<li class="mb-1"><span data-feather="map-pin" class="feather-sm me-1"></span> From <a href="#">Boston</a></li>
+									</ul>
+								</div> -->
+								 
+								 
+							</div>
+						</div>
+
+						<div class="col-md-8 col-xl-9">
+							<div class="card">
+					
+								<div class="card-body h-100">
+    
+                                    <form action="/user/update" method="post">
+                                        <div class="card">
+                                            
+                                            <div class="card-body">
+                                                <% if(currentUserInfo!=undefined) {%> 
+													<label for="uname" style="float: left;">Username</label>
+                                                     <br>
+													<input type="text" required value="<%= currentUserInfo.username %>" 
+													class="form-control" name="username" placeholder="Enter username here"  >
+                                                    <br>
+                                                    <label for="uname" style="float: left;">House Tele</label>
+													<br>
+													<input type="text" required value="<%= currentUserInfo.tel_house%>" 
+													class="form-control" name="Housetel" placeholder="Enter house telephone here" >
+                                                    <br>
+													<label for="Telephone" style="float: left;">Telephone</label>
+													<br>
+                                                    <input type="text" required value="<%= currentUserInfo.telephone%>" 
+													class="form-control" name="telephone" placeholder="Enter telephone here" >
+													
+                                                    <br>
+													<label for="Region" style="float: left;">Region</label>
+													<br>
+                                                    <input type="text" required value="<%= currentUserInfo.region%>" 
+													class="form-control" name="region" placeholder="Enter region here">
+                                                    <br>
+													<label for="Address" style="float: left;">Address</label>
+													
+													<br><input type="text" required value="<%= currentUserInfo.address %>" 
+													class="form-control" name="address" placeholder="Enter address here" >
+                                                    <br>
+													<label for="Address" style="float: left;">House No.</label>
+													<br>
+													<input type="text" required value="<%= currentUserInfo.house_no%>" 
+													class="form-control" name="house_no" placeholder="Enter house number here">
+                                                    <br>
+													<label for="Address" style="float: left;">Email</label>
+													<br>
+													<input type="text" required value="<%= currentUserInfo.email%>" 
+													class="form-control" name="email" placeholder="Enter email here" >
+                                                    
+                                                    <br>
+													<label for="Address" style="float: left;">Password</label>
+													<br>
+                                                    <input type="text" required value="<%= currentUserInfo.password%>"
+													 class="form-control" name="password" placeholder="Enter password here" >
+                                                    <br>
+                                                   
+                                                    <input type="submit" class="submit" value="Update Info">
+                                                    
+                                                <% }else{ %> 
+												 <script>
+													window.location.href='/';
+												 </script>
+												 <% } %> 
+                                                <style>
+                                                    .submit{
+                                                        width:120px;
+                                                        margin-top: 20px;
+                                                        border: 1px solid rgb(197, 193, 193);
+                                                        padding: 8px 12px;
+                                                        border-radius: 2px;
+                                                        color: rgb(11, 1, 1);
+                                                    }
+														.submit:hover{
+															background-color: rgb(100, 103, 106);
+															cursor: pointer;
+														}
+                                                    .form-control{
+                                                        height: 50px;
+														width: 80% !important;
+                                                    }
+													.card-body{
+														margin: 50px 20px 30px 20px;
+													}
+													@media screen and (max-width:900px) {
+														.form-control{
+                                                        height: 50px;
+														width: 98% !important;
+                                                    }
+													label{
+														margin-left: 10px !important;
+													}
+
+													}
+													label{
+														margin-left: 143px;
+													}
+                                                </style>
+    
+                                            </div>
+                                        </div>
+    
+                                    </form>
+									
+  
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</main>
+  
+		</div>
+	</div>
+
+ </center>
+</body>
+
+</html>

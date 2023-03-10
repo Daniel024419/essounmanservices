@@ -1,0 +1,153 @@
+<style>
+    .row{
+width: 120%;
+}
+@media screen and (max-width:800px) {
+.row{
+width: auto !important;
+}
+th,td{
+font-size: 12.2px;
+}
+}
+</style>
+					<div class="row">
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">Completed (<%= orders_result_admin_completed.length %> )</h5>
+								</div>
+                                <div class="card-header">
+
+
+                                    <form action="/dashboard/completed-orders" method="get">                                                    <div class="card">
+                                                        
+                                        <div class="card-body">
+                                            <% if(search!=undefined) {%>
+                                                <input type="text"   value="<%=search.searchInput%>" 
+                                                class="form-control" 
+                                                name="searchInput" 
+                                                placeholder="Enter search here and press enter key">
+                                         
+                                                <% } %>
+                                                 
+                                        </div>
+                                    </div>
+
+                                    </form>
+                                   <%  if(orders_result_admin_completed.length!=undefined){ %> 
+									<h5 class="card-title mb-0">Latest Orders ( 
+                                           <%= orders_result_admin_completed.length  %>  )</h5>
+
+                                        <%  }%>  
+ 
+                           <% if(orders_result_admin_completed!=undefined){ %> 
+                                            <% 
+                                               if(orders_result_admin_completed.length==0) {%> 
+                                                <br> <center><h3 style="color: red;">No returned results for the search</h3></center><br>
+                                            <% } %>   
+                                          <%   }%>
+								  </div>
+								<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>#</th>
+                                            <!-- <th>User Id</th> -->
+                                            <th class="d-none d-xl-table-cell">Bookin Id</th>
+                                            <th class="d-none d-xl-table-cell">Userame</th>
+                                            <!-- <th>House Tel</th> -->
+                                            <th>Tel</th>
+                                            <th class="d-none d-xl-table-cell">Region</th>
+                                            <th >Address</th>
+                                            <!-- <th>House No.</th> -->
+                                            <th>ServiceDay</th>
+                                            <th class="d-none d-xl-table-cell">Booking Date</th>
+                                            <!-- <th class="d-none d-xl-table-cell">Email</th> -->
+                                            <th class="d-none d-xl-table-cell">Price</th>
+                                            <th class="d-none d-xl-table-cell">Type</th>
+                                            <th class="d-none d-xl-table-cell">Package</th>
+                                            <th>Action?</th>
+                                            <!-- <th>Response</th> -->
+											<!-- <th class="d-none d-xl-table-cell">End Date</th>
+											<th>Status</th>
+											<th class="d-none d-md-table-cell">Assignee</th> -->
+										</tr>
+									</thead>
+									<tbody>
+										 
+                                        <% if(orders_result_admin_completed!=undefined) {%> 
+
+                                        <% for( let index = 0; index < orders_result_admin_completed.length; index++ ) { %>
+
+
+                                            <tr>
+                                                <td><%= orders_result_admin_completed[index].id%></td>
+                                                <!-- <td><%= //orderData[index].user_id%></td> -->
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin_completed[index].bookingId%></td>
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin_completed[index].user_name%></td>
+                                                <!-- <td><%=// orderData[index].Tel_house%></td> -->
+                                                <td> <a href="tel:<%= orders_result_admin_completed[index].Tel%>"><i class="align-middle" data-feather="phone-call"></i></a> </td>
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin_completed[index].region%></td>
+                                                <td><%= orders_result_admin_completed[index].address%></td>
+                                                <!-- <td><%= //orders_result_admin_completed[index].book_date%></td>   -->
+                                                <!-- <td><%= //orders_result_admin_completed[index].house_no%></td> -->
+                                                <td><%= orders_result_admin_completed[index].book_date%></td>
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin_completed[index].bookingtime%></td>
+                                                <!-- <td><%= //orders_result_admin_completed[index].email%></td> -->
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin_completed[index].price%></td>
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin_completed[index].type%></td>
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin_completed[index].package%></td>
+                                                <!-- <td><%= //orders_result_admin_completed[index].response%></td> -->
+                                                
+                                                 <td>
+                                                    <span class="badge " style="background-color: rgb(236, 19, 4);padding: 10px;">
+                                                        <a href="#"  onclick="warn();"
+                                                             style="color: white;padding: 2px;text-decoration: none;">Del</a>
+                                                    </span>
+                                                </td>
+                                               
+
+                                                <script>
+                                                    function warn(){
+                                                      const  conf= confirm('Do you want to delete this\nOnce deleted can not be recovered');
+                                                      if(conf==true){
+                                                        window.location.href='/order-delete/<%=orders_result_admin_completed[index].id%>';
+                                                         return true;
+                                                      }
+                                                      else{
+                                                        return false;
+                                                      }
+                                                    }
+                                                </script>
+
+                                                <!-- <td class="d-none d-xl-table-cell">01/01/2021</td>
+                                                <td class="d-none d-xl-table-cell">31/06/2021</td>
+                                                <td><span class="badge bg-warning">In progress</span></td>
+                                                <td class="d-none d-md-table-cell">William Harris</td> -->
+                                            </tr>
+                                        <% } %>
+
+
+                                        <% } else{%>  
+
+                                            <tr colspan="4">
+                                                <td class="d-none d-md-table-cell">You do not have any orders yet..</td>
+                                            </tr>
+                                            <%  }%> 
+
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						 
+					</div>
+
+			 
+
+	 
+
+ 
+ 

@@ -1,0 +1,51 @@
+  
+					<div class="row">
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+                                <div class="card-header">
+
+									<h5 class="card-title mb-0">Services Edit (<%= Sid.SId; %>)</h5>
+								</div>
+                                <form action="/service/update" method="post">
+                                    <div class="card">
+                                        
+                                        <div class="card-body">
+                                            
+                                                <input type="text" required value="<%= service.name%>" class="form-control" name="service" placeholder="Enter services name here">
+                                                <br>
+                                                <input type="number" required value="<%= service.price%>" class="form-control" name="price" placeholder="Enter price here">
+                                                
+                                                <input type="hidden" name="id" value="<%=Sid.SId%>" readonly id="id">
+                                                <input type="hidden" name="availabilty" value="<%=service.availabilty%>" readonly id="control">
+                                                <input type="hidden" name="control" value="<%=service.control%>" readonly id="control">
+                                               <br>
+                                                <input type="submit" class="submit" value="Update">
+                                                
+                                            
+                                            <style>
+                                                .submit{
+                                                    width:120px;
+                                                    margin-top: 20px 50px;
+                                                    border: 1px solid #ccc;
+                                                    padding: 10px 19px;
+                                                    border-radius: 2px;
+                                                }
+                                                
+                                            </style>
+
+                                        </div>
+                                    </div>
+
+                                </form>
+								 
+							</div>
+						</div>
+						 
+					</div>
+
+			 
+
+	 
+
+ 
+ 

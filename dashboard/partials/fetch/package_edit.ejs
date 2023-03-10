@@ -1,0 +1,52 @@
+  
+					<div class="row">
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+                                <div class="card-header">
+
+									<h5 class="card-title mb-0">Packages Edit (<%= pId.pkId; %>)</h5>
+								</div>
+                                <form action="/package/update" method="post">
+                                    <div class="card">
+                                        
+                                        <div class="card-body">
+                                
+                                          <label for="max">Max Price</label>  <input type="number" required class="form-control" name="max_price" placeholder="Enter price here"  value="<%= packages.max_price%>">
+                                            <br>
+                                            <label for="max">Min Price</label>  <input type="number" required class="form-control" name="min_price" placeholder="Enter min price here"  value="<%= packages.min_price%>">
+                                              <br><label for="max">Type</label> <input type="text" required class="form-control" name="type" placeholder="Enter type name here" value="<%= packages.type%>">
+                                            <br><input type="text" required class="form-control" readonly name="package_type" value="Pro" value="<%= packages.package_type%>">
+                                               
+                                         
+                                         <input type="hidden" name="id" value="<%= packages.id%>">
+                                          <br> <input type="submit" class="submit" value="Update">
+                                                
+                                            <style>
+                                                .submit{
+                                                    width:100px;
+                                                    margin-top: 10px;
+                                                    border: 1px solid #ccc;
+                                                    padding: 5px 12px;
+                                                    border-radius: 2px;
+                                                }
+                                                .submit:hover{
+                                                    border: 1px solid rgb(53, 52, 52);
+                                                }
+                                            </style>
+
+                                        </div>
+                                    </div>
+
+                                </form>
+								 
+							</div>
+						</div>
+						 
+					</div>
+
+			 
+
+	 
+
+ 
+ 

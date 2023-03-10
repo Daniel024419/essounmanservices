@@ -1,0 +1,109 @@
+  
+					<div class="row">
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+							<div class="card flex-fill">
+                                <div class="card-header">
+
+									<h5 class="card-title mb-0">Packages (<%= result_packages_admin.length %> )</h5>
+								</div>
+                                <!-- <form action="/package/add" method="post">
+                                    <div class="card">
+                                        
+                                        <div class="card-body">
+
+                                            <input type="text" required class="form-control" name="package_type" placeholder="Enter package type name here">
+                                             <input type="text" required class="form-control" name="type" placeholder="Enter type name here">
+                                            <input type="text" required class="form-control" name="min_price" placeholder="Enter min price name here">
+                                              <input type="text" required class="form-control" name="max_price" placeholder="Enter max price name here">
+                                           
+                                            <input type="submit" class="submit" value="Add">
+                                            <style>
+                                                .submit{
+                                                    width:60px;
+                                                    margin-top: 20px;
+                                                    border: 1px solid #ccc;
+                                                    padding: 3px 9px;
+                                                    border-radius: 2px;
+                                                }
+                                                .form-control{
+                                                    margin-top: 10px;
+                                                }
+                                            </style>
+
+                                        </div>
+                                    </div>
+
+                                </form> -->
+								<table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th>#</th>
+                                            <!-- <th>User Id</th> -->
+        
+                                            
+                                            <th>Package</th>
+                                            <th>Type</th>
+                                             
+                                            <th>Min_Px</th>
+                                            <th>Max_px</th>
+                                            <th>Action</th>
+                                           
+                                            
+										</tr>
+									</thead>
+									<tbody>
+										 
+                                        <% if(result_packages_admin!=undefined) {%> 
+
+                                        <% for( let index = 0; index < result_packages_admin.length; index++ ) { %>
+
+                                            <tr>
+                                                <td><%= result_packages_admin[index].id%></td>
+                                                 
+                                                 <td><%= result_packages_admin[index].package_type%></td>
+                                                 <td><%= result_packages_admin[index].type%></td>
+                                                 <td><%= result_packages_admin[index].max_price%></td>
+                                                 <td><%= result_packages_admin[index].min_price%></td>
+
+                                                 
+                                                <td>
+                                                    <!-- <span class="badge " style="background-color: rgb(236, 19, 4);padding: 10px 12px;">
+                                                        <a href="/delete-package/<%= //result_packages_admin[index].id%> "
+                                                             style="color: white;padding: 3px;text-decoration: none;"> Del</a>
+                                                    </span> -->
+                                                    <span class="badge " style="background-color: rgb(3, 130, 12);padding: 10px 12px;">
+                                                        <a href="/edit-package/<%=result_packages_admin[index].id%> "
+                                                             style="color: white;padding: 2px;text-decoration: none;">Edit</a>
+                                                    </span>
+                                                </td>
+                                               
+                                                <!-- <td class="d-none d-xl-table-cell">01/01/2021</td>
+                                                <td class="d-none d-xl-table-cell">31/06/2021</td>
+                                                <td><span class="badge bg-warning">In progress</span></td>
+                                                <td class="d-none d-md-table-cell">William Harris</td> -->
+                                            </tr>
+                                        <% } %>
+
+
+                                        <% } else{%>  
+
+                                            <tr colspan="4">
+                                                <td class="d-none d-md-table-cell">You do not have any packages yet..</td>
+                                            </tr>
+                                            <%  }%> 
+
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						 
+					</div>
+
+			 
+
+	 
+
+ 
+ 

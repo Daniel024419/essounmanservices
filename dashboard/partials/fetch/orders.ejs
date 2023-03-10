@@ -1,0 +1,149 @@
+  
+					<div class="row">
+                        <style>
+                            .row{
+    width: 120%;
+}
+@media screen and (max-width:800px) {
+     .row{
+        width: auto !important;
+     }
+     th,td{
+        font-size: 12.2px;
+     }
+}
+                        </style>
+						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
+            
+                                
+							<div class="card flex-fill">
+								<div class="card-header">
+
+
+                                    <form action="/dashboard/orders" method="get">                                                    <div class="card">
+                                                        
+                                        <div class="card-body">
+                                            <% if(search!=undefined) {%>
+                                                <input type="text"   value="<%=search.searchInput%>" 
+                                                class="form-control" name="searchInput" placeholder="Enter search here">
+                                         
+                                                <% } %>
+                                                 
+                                        </div>
+                                    </div>
+
+                                    </form>
+                                   <%  if(orders_result_admin.length!=undefined){ %> 
+									<h5 class="card-title mb-0">Latest Orders ( 
+                                           <%= orders_result_admin.length  %>  )</h5>
+
+                                        <%  }%>  
+ 
+                                             
+
+                                                
+                                               
+                                            
+
+
+                                        
+                                         <% if(orders_result_admin!=undefined){ %> 
+                                            <% 
+                                               if(orders_result_admin.length==0) {%> 
+                                                <br> <center><h3 style="color: red;">No returned results for the search</h3></center><br>
+                                            <% } %>   
+                                          <%   }%>
+								  </div>
+
+                                   
+								  <table class="table table-hover my-0">
+									<thead>
+										<tr>
+											<th style="width: 8px;">#</th>
+                                            <!-- <th>User Id</th> -->
+                                            <th class="d-none d-xl-table-cell">Bookin Id</th>
+                                            <th class="d-none d-xl-table-cell">Userame</th>
+                                            <!-- <th>House Tel</th> -->
+                                            <th>Tel</th>
+                                            <!-- <th>Region</th> -->
+                                            <th>Address</th>
+                                            <!-- <th>House No.</th> -->
+                                            <th>ServiceDay</th>
+                                            <th class="d-none d-xl-table-cell">Date</th>
+                                            <!-- <th>Email</th> -->
+                                            <th class="d-none d-xl-table-cell">Price</th>
+                                            <th>Type</th>
+                                            <th class="d-none d-xl-table-cell">Package</th>
+                                            <th class="d-none d-xl-table-cell">Done</th>
+                                            <!-- <th>Response</th> -->
+											<!-- <th class="d-none d-xl-table-cell">End Date</th>
+											<th>Status</th>
+											<th class="d-none d-md-table-cell">Assignee</th> -->
+										</tr>
+									</thead>
+									<tbody>
+										 
+                                        <% if(orders_result_admin!=undefined) {%> 
+
+                                        <% for( let index = 0; index < orders_result_admin.length; index++ ) { %>
+
+
+                                            <tr>
+                                                <td style="width: 8px;"><%= orders_result_admin[index].id%></td>
+                                                <!-- <td><%= //orderData[index].user_id%></td> -->
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin[index].bookingId%></td>
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin[index].user_name%></td>
+                                                <!-- <td><%=// orderData[index].Tel_house%></td> -->
+                                                <td><a href="tel:<%= orders_result_admin[index].Tel%>"><i class="align-middle" data-feather="phone-call"></i></a>  </td>
+                                                <!-- <td><%= //orderData[index].region%></td> -->
+                                                <td><%= orders_result_admin[index].address%></td>
+                                                <!-- <td><%= //orderData[index].book_date%></td>   -->
+                                                <!-- <td><%= //orderPendingData[index].house_no%></td> -->
+                                                <td><%= orders_result_admin[index].book_date%></td>
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin[index].bookingtime%></td>
+                                                <!-- <td><%= //orderData[index].email%></td> -->
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin[index].price%></td>
+                                                <td ><%= orders_result_admin[index].type%></td>
+                                                <td class="d-none d-xl-table-cell"><%= orders_result_admin[index].package%></td>
+                                                <!-- <td><%= //orderPendingData[index].response%></td> -->
+                                                <% if(orders_result_admin[index].completed==1) {%> 
+                                                    <td class="d-none d-xl-table-cell"><span class="badge " style="background-color: green;padding: 10px;">
+                                                        Yes</span></td>
+                                              
+                                                <% }else{%>
+                                                    <td class="d-none d-xl-table-cell"><span class="badge" style="background-color: rgb(197, 7, 7);padding: 10px;">
+                                                        No <span></td>
+                                              
+                                                <% } %>  
+                                                
+                                               
+                                                <!-- <td class="d-none d-xl-table-cell">01/01/2021</td>
+                                                <td class="d-none d-xl-table-cell">31/06/2021</td>
+                                                <td><span class="badge bg-warning">In progress</span></td>
+                                                <td class="d-none d-md-table-cell">William Harris</td> -->
+                                            </tr>
+                                        <% } %>
+
+
+                                        <% } else{%>  
+
+                                            <tr colspan="4">
+                                                <td class="d-none d-md-table-cell">You do not have any orders yet..</td>
+                                            </tr>
+                                            <%  }%> 
+
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						 
+					</div>
+
+			 
+
+	 
+
+ 
+ 

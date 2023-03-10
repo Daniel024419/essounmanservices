@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, 
+                   initial-scale=1.0">
+    <title> Refresh Example </title>
+    <style>
+        /* Css Styling */
+        h1{
+            font-size: 45px;
+            font-family: 'Courier New',
+                          Courier,
+                          monospace;
+            text-align: center;
+        }
+  
+        .btn{
+            padding: 10px 20px;
+            font-size: 24px;
+            background-color: #0f9d58;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            outline: none;
+            box-shadow: 0px 3px 2px 1px rgb(100, 100, 100);
+            cursor: pointer;
+        }
+  
+        #popup-btn{
+            margin-left: 45%;
+        }
+  
+        #wrapper{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color:rgba(100, 100, 100, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+        }
+  
+        #popup{
+            width: 50%;
+            height: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+  
+        h2{
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+  
+    <!-- Create a simple web page -->
+    <div>
+        <h1>Refresh Example </h1>
+      
+        <button class="btn" id="popup-btn">
+            Show popup
+        </button>
+    </div>
+  
+    <!-- Create a simple popup which is hidden using CSS -->
+    <div id="wrapper">
+        <div id="popup">
+            <div>
+                <h2>POPUP</h2>
+                <button class="btn" id = "close-btn">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+  
+    <!-- All JavaScript code and logic -->
+    <script>
+        // Attach event listener to open popup
+        document.getElementById(
+'popup-btn').addEventListener('click', (e)=>{
+            document.getElementById(
+'wrapper').style.visibility = "visible";
+        })
+  
+// Attach event listener to first close popup and then refresh page
+        document.getElementById(
+'close-btn').addEventListener('click', (e) => {
+            document.getElementById(
+'wrapper').style.visibility = "hidden";
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>

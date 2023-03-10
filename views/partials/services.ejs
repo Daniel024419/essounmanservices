@@ -1,0 +1,111 @@
+ 
+
+  <div class="container-gallery" style="margin-bottom: -69px;margin-top: -20px;">
+<div class="search-box">
+ 
+    <form action="/services" method="get">
+        <i class="fa fa-search" style="padding-top: 12px;"></i>
+        <% if(search!=undefined) {%>
+            <input type="text" name="serviceName"  value="<%=search.serviceName%>"
+              placeholder="Search a service and press enter key">
+               
+              <% } %>  
+        
+       
+        
+    </form>
+   
+</div></div>
+
+<!-- 1 -->
+
+<div>
+
+ <% if(service_data.length==0) {%> 
+   <br> <center><h3 style="color: red;">No returned results for the search</h3></center><br>
+    <% } %> 
+<% if(service_data!=undefined) {%> 
+   
+<% for( let index = 0; index < service_data.length; index++ ) { %>
+
+
+    <div class="columns">
+        <ul class="price">
+            
+        <li class="header" style="text-transform: uppercase;"><%= service_data[index].name %></li>
+        
+        <table width="100%" class="table-service" border="0">
+                <th>Hour Price</th>
+                <th>Type</th>
+                <tr>
+               
+        <td>
+        <li class="grey" >
+         &#8373 <%=service_data[index].hour_price%>.00</li>
+        </td>      
+                <td>
+                    <li class="grey"><%= service_data[index].name %> </li></td>
+                </tr>
+        <tr class="addons"><th colspan="2" style="text-align: center;">Availibilty</th></tr>
+                 
+             <tr> 
+            <td> <li class="grey"><i class="fa fa-clock"></i></li></td>
+            <td><li class="grey"> <%= service_data[index].availabilty %> </li></td>
+            </tr>
+            <!-- ac -->
+            <tr class="addons"><th colspan="2" style="text-align: center;">Accuracy</th></tr>
+            <td> <li class="grey"><i class="fa fa-clock"></i></li></td>
+                <td><li class="grey"> 100%</li></td>
+
+            </tr>
+            
+            </table>
+        <li class="grey" id="btn-more">
+            <a href="/booking/service/<%=service_data[index].id%> " class="button">
+                <i class="fa fa-book"></i> Book</a>
+
+                <% if(businessinfo!=undefined) {%> 
+                <% for( let index = 0; index <=0; index++ ) { %>
+                 
+               <a href="tel:<%= businessinfo[index].phone %>" class="button">
+                <i class="fa fa-phone-alt" aria-hidden="true"></i>
+                Call
+              </a>
+              <% } %> 
+              <% } %> 
+
+            </li>
+        
+        </li>
+         
+          
+        </ul>
+    </div> 
+    <% } %> 
+    
+    <% } else{ %> 
+        <script>
+           // window.location.href='/';
+        </script>
+        <center><h1>No published services </h1></center>
+    <% } %>  
+
+    
+
+       
+<script>
+    // const search = document.getElementsByTagName('input').value;
+    
+    //  if(search == ""){
+    //  window.reload();
+    //  }
+ 
+//  search.addEventListener("keyup", () =>{
+//      if(search.value != "") return;
+ 
+//      images.forEach(image =>{
+//          image.style.display = "block";
+//      })
+//  })
+ 
+ </script>

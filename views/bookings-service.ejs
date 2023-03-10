@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <%- include('./partials/title.ejs'); %> 
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+<!-- nav -->
+<section id="menu">
+    <!-- including nav -->
+    <%- include("./partials/nav.ejs"); %>
+</section>
+<!-- end -->
+<!-- heading -->
+  <section  id="bg-slider">
+    <%- //include("./partials/heading.ejs"); %>
+        
+  </section>
+
+<!--  -->
+<br><br><br>
+<form class="modal-content animate" style="margin-bottom:10px;"
+ action="/book-services" method="post">
+ 
+ <div class="container">
+     <!-- id -->
+      <input type="hidden" 
+     value="<%=booking.typeId%>"
+      name="typeId" required>
+      <input type="hidden" 
+     value="<%=booking.bookingId %>"
+      name="bookingId" required>
+     <!--end-->
+    <!-- id --> 
+ <input type="hidden" 
+ value="<%=user.id%>"
+ name="user_id" required>
+    <!--end-->
+<% if(currentUser!=undefined){ %> 
+<br>
+<span style="color: red;font-size: 12px;"><i>Note:Any modification,goto profile page </i> </span>
+<br>
+    <!-- type -->
+    <label><b>Type</b><span style="color: red;">*</span></label>
+    <input type="text"  
+    name="type" 
+    value="<%=booking.serviceName%>"
+    required readonly >
+    
+    
+<!-- end -->
+<!-- username -->
+  <label><b>Username</b></label>
+  <input type="text" placeholder=
+  ""
+  value="<%=user.username%> "
+   name="username" required readonly>
+<!--  end-->
+
+<!-- house tel -->
+<label><b>House Tel.</b></label>
+<input type="text" placeholder=
+"" 
+name="Housetel" 
+value="<%=user.tel_house%>"
+required readonly>
+
+<!-- end -->
+
+<!-- personl tel -->
+<label><b>Personal Tel.</b></label>
+<input type="text" placeholder="" 
+name="Tel" 
+value="<%=user.telephone%>"
+required readonly>
+
+
+<!-- end -->
+<label><b>Price &#8373<span style="color: red;">*
+</span></b></label>
+  <input type="number"  
+  value="<%=booking.price%>"
+   name="price" required readonly>
+   <!-- end -->
+
+<!-- region -->
+<label><b>Region<span style="color: rgb(248, 0, 0);">*
+</span></b></label>
+<span>
+<input list="region" value='<%=user.region%> ' 
+ name="region" class="region" readonly placeholder="Enter to search...">
+ <datalist id="region">
+ <option class="" >         
+</datalist>
+</span>
+<!-- end -->
+<!-- adrress -->
+<label><b>Exact Address<span style="color: red;">*
+</span></b></label>
+<input type="text"  
+value="<%=user.address%>"
+name="address" required readonly>
+<!-- end -->
+
+<!-- house number -->
+<label><b>House No.<span style="color: rgba(43, 155, 2, 0.431);">*
+</span></b></label>
+<input type="text" placeholder=
+"" name="houseNo" 
+value="<%=user.house_no%>" readonly>
+<!-- end -->
+<!-- date -->
+<label><b>Service Date&Time<span style="color: red;">*</span></b></label>
+<br><span style="color: red;font-size: 12px;"><i>Note: The working day and Time</i> </span>
+<input type="datetime-local" name="book_date" value="<%= booking.book_date; %> "  required>
+<!-- end -->
+  <!-- end -->
+
+
+  <label><b>Email<span style="color: red;">*</span></b></label>
+  <input type="email" value="<%=user.email%>" name="email" required readonly>
+   
+
+ <!-- <label><b>Package Type<span style="color: red;">*</span></b></label>
+ <input type="text" value="<%=//booking.package%>" name="package" readonly required>
+  -->
+
+  <!--  -->
+  <button type="submit" class="btnlogin">Send</button>
+
+
+
+
+<!-- end -->
+<% }else{ %>
+    <span style="color: red;font-size: 13px; float: right;">
+        <i>Auto fill when you have a an acconunt with us.</i>  
+    <a href="/account">
+        <span onclick="document.getElementById('id02').style.display='block'"
+           style="width:auto" > <h4>Signup here</h4>
+        </span>
+    </a><br>
+        </span> 
+         <br><br>
+    <!-- type -->
+    <label><b>Type</b><span style="color: red;">*</span></label>
+    <input type="text"  
+    name="type"     value="<%=booking.serviceName%>" required readonly >
+    
+
+<!-- end -->
+<!-- username -->
+<label><b>Username</b></label>
+<input type="text" placeholder=
+""
+ name="username" required>
+<!--  end-->
+
+<!-- house tel -->
+<label><b>House Tel.</b></label>
+<input type="text" placeholder=
+"" 
+name="Housetel" 
+ required>
+
+<!-- end -->
+
+<!-- personl tel -->
+<label><b>Personal Tel.</b></label>
+<input type="text" placeholder="" 
+name="Tel" required>
+
+
+<!-- end -->
+<label><b>Price &#8373<span style="color: red;">*
+</span></b></label>
+  <input type="text" value="<%=booking.price%>.00 "
+    name="price" required readonly>
+   <!-- end -->
+
+<!-- region -->
+<label><b>Region<span style="color: rgb(248, 0, 0);">*
+</span></b></label>
+<span>
+<input list="region"  
+ name="region" class="region" placeholder="Enter region..">
+ <datalist id="region">
+ <option class="" >         
+</datalist>
+</span>
+<!-- end -->
+<!-- adrress -->
+<label><b>Exact Address<span style="color: red;">*
+</span></b></label>
+<input type="text"  
+name="address" required >
+<!-- end -->
+<!-- house number -->
+<label><b>House No.<span style="color: rgba(43, 155, 2, 0.431);">*
+</span></b></label>
+<input type="text" placeholder=
+"" name="houseNo">
+<!-- end -->
+<!-- date -->
+<label><b>Service Date&Time<span style="color: red;">*</span></b></label>
+<br><span style="color: red;font-size: 12px;"><i>Note: The working day and Time</i> </span>
+<input type="datetime-local" name="book_date" required>
+<!-- end -->
+  <!-- end -->
+
+
+  <label><b>Email<span style="color: red;">*</span></b></label>
+  <input type="email"  name="email" required >
+  <!-- package -->
+  
+  <!--  -->
+  <button type="submit" class="btnlogin">Send</button>
+
+    <!-- end -->
+    <% } %> 
+
+
+ 
+
+<br>
+<input type="radio" name="response" checked  value="Quick">
+Quick Response
+</div>
+
+
+ <div class="container"
+ style="background-color:#f1f1f1">
+ <a href="/">
+ <button type="button"
+ onclick="document.getElementById
+ ('id01').style.
+
+ display='none'" class="cancelbtn btnlogin">
+ Cancel</button>
+ </a>
+ <span class="psw"> 
+ <a href="tel:0293735234252">Help?
+
+ </a></span>
+  </div>
+  </form>
+
+     <!-- end -->
+<!-- accordion -->
+<section id="accordion">
+    <%- //include('./partials/testimonial.ejs'); %> 
+</section>
+<!-- end -->
+<!-- login modal -->
+<section class="login">
+    <!-- including signup modal -->
+  </section>
+<!-- end -->
+<!-- signup -->
+<section id="signup">
+    <!-- including sign up -->
+  
+</section>
+<!-- feedback -->
+<section id="feedback">
+<%- include("./partials/feedback.ejs"); %>
+</section>
+<!-- footer -->
+<section id="footer">
+    <!-- including the footer -->
+    <%- include("./partials/footer.ejs"); %>
+</section>
+
+</body>
+</html>

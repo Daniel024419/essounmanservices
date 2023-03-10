@@ -1,0 +1,26 @@
+
+<head>
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="css/swiper-bundle.min.css">
+
+</head>
+<section class="about-us">
+    <div class="about">
+      <img src="/public/pictures/images.jpg" alt="pic" class="pic">
+      <div class="text">
+        <h2>About Us</h2>
+        <h5>WE ARE THE BEST</h5>
+
+        <% if(businessinfo!=undefined) {%> 
+          <% for( let index = 0; index < businessinfo.length; index++ ) { %>
+        <p>
+          <%=businessinfo[index].about%> 
+        </p>
+         <% } }%> 
+        <div class="data">
+        <a href="/contact" class="hire">Hire Me</a>
+        </div>
+      </div>
+    </div>
+</section>
+  

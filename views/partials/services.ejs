@@ -20,10 +20,11 @@
 <!-- 1 -->
 
 <div>
-
+<% if(service_data!=undefined) {%> 
  <% if(service_data.length==0) {%> 
    <br> <center><h3 style="color: red;">No returned results for the search</h3></center><br>
     <% } %> 
+ <% } %> 
 <% if(service_data!=undefined) {%> 
    
 <% for( let index = 0; index < service_data.length; index++ ) { %>

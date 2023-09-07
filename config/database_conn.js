@@ -16,8 +16,6 @@ connection.connect( async (error)=> {
    // if (error) throw error;
     if(error){
         console.log("Xampp not connected");
-    }else{
-        console.log("db connected...");
     }
 }
 catch(ex){

@@ -8,6 +8,8 @@ var fs = require('fs');
  var mysql = require('mysql');
 require('dotenv').config();
 // session modiules
+//importing mails support
+const mailHelper = require('./mailhelper');
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -404,7 +406,7 @@ const booking = {
 
  
       res.render(__dirname + "/views/quickOrders.ejs",
-        {basicData,userSession:userSession,order_result,booking:booking});
+        {userSession:userSession,booking:booking});
 
     });
 });
@@ -875,6 +877,9 @@ try {
     let completed=0;
     let response=mysql.format(req.body.response); 
     let quickuserId=secs+""+minutes;
+
+    var transporter = mailHelper.transporter;
+    var EMAIL_USERNAME = process.env.EMAIL_USERNAME;
     // quick users
         const quickusers = [quickuserId,bookingId,username,
         tel_House,Tel,region,address,house_no,email,bookingtime]; 
@@ -888,13 +893,39 @@ try {
         user_name,Tel_house,Tel,region,address,house_no,book_date,
         bookingtime,email,price,type,package,completed,response) 
             VALUES(?,?, ?,?, ?,?, ?,?, ?,? ,?,? ,?,?,?,?)`,boookinginfo,
-          function(error,response) {
+        function(error,response) {
         //displaying error code
         if (error) {
          console.error(error);
         }
            if(response){
             // serving sucess page
+
+
+
+                        const mailConfigurations = {
+                            // It should be a string of sender/server email
+                            from: EMAIL_USERNAME,
+                            to: email,
+                            // Subject of Email
+                            subject: 'Jobament Home Services',
+                            // This would be the text of email body
+                            //  + user +
+                            html: `<h1>Hi! ${username} </h1>, <p>Your booking has Successfully been processed, 
+                            BOOKING-ID ${bookingId} ,booking time ${bookingtime}</p>
+    `
+                        };
+
+                    transporter.sendMail(mailConfigurations, function(error, info) {
+                            if (error) throw Error(error);
+                            if (error) {
+                                console.log('no internet to send mail');
+                            }
+                            console.log('Email Sent Successfully');
+                           
+                        });
+
+
             res.render(__dirname + "/views/partials/success/userbooking.ejs");
            }
       
@@ -916,7 +947,7 @@ try {
             function (err, order_result, fields) {
               try{
                 // ftech package
-              order_result.forEach((duplicates)=>{
+                order_result.forEach((duplicates)=>{
                 Dbprice=duplicates.price;
                 Dbpackage=duplicates.package;
                 Dbtype=duplicates.type;
@@ -944,6 +975,37 @@ try {
           if (error) {
            console.error(error);
           }
+         
+
+         if (response) {
+
+
+
+
+                        const mailConfigurations = {
+                            // It should be a string of sender/server email
+                            from: EMAIL_USERNAME,
+                            to: email,
+                            // Subject of Email
+                            subject: 'Jobament Home Services',
+                            // This would be the text of email body
+                            //  + user +
+                            html: `<h1>Hi! ${username} </h1>, <p>Your booking has Successfully been processed, 
+                            BOOKING-ID ${bookingId} ,booking time ${bookingtime}</p>
+    `
+                        };
+
+                    transporter.sendMail(mailConfigurations, function(error, info) {
+                            if (error) throw Error(error);
+                            if (error) {
+                                console.log('no internet to send mail');
+                            }
+                            console.log('Email Sent Successfully');
+                           
+                        });
+
+         }
+
             
         
         });
@@ -1034,6 +1096,33 @@ try {
              console.error(error);
             }
                if(response){
+
+                        var transporter = mailHelper.transporter;
+                        var EMAIL_USERNAME = process.env.EMAIL_USERNAME;
+
+                        const mailConfigurations = {
+                            // It should be a string of sender/server email
+                            from: EMAIL_USERNAME,
+                            to: email,
+                            // Subject of Email
+                            subject: 'Jobament Home Services',
+                            // This would be the text of email body
+                            //  + user +
+                            html: `<h1>Hi! ${username} </h1>, <p>Your booking has Successfully been processed, 
+                            BOOKING-ID ${bookingId} ,booking time ${bookingtime}</p>
+    `
+                        };
+
+                    transporter.sendMail(mailConfigurations, function(error, info) {
+                            if (error) throw Error(error);
+                            if (error) {
+                                console.log('no internet to send mail');
+                            }
+                            console.log('Email Sent Successfully');
+                           
+                        });
+
+
                 // serving sucess page
                 res.render(__dirname + "/views/partials/success/userbooking.ejs");
                }
@@ -1069,6 +1158,36 @@ try {
           //displaying error code
 
           if (error) throw error;    
+
+
+          if (response) {
+
+             var transporter = mailHelper.transporter;
+                        var EMAIL_USERNAME = process.env.EMAIL_USERNAME;
+
+                        const mailConfigurations = {
+                            // It should be a string of sender/server email
+                            from: EMAIL_USERNAME,
+                            to: email,
+                            // Subject of Email
+                            subject: 'Jobament Home Services',
+                            // This would be the text of email body
+                            //  + user +
+                            html: `<h1>Hi! ${username} </h1>, <p>Your booking has Successfully been processed, 
+                            BOOKING-ID ${bookingId} ,booking time ${bookingtime}
+                            </p>
+    `
+                        };
+
+                    transporter.sendMail(mailConfigurations, function(error, info) {
+                            if (error) throw Error(error);
+                            if (error) {
+                                console.log('no internet to send mail');
+                            }
+                            console.log('Email Sent Successfully');
+                           
+                  });
+          }
         
         });
 

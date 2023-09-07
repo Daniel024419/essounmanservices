@@ -1782,6 +1782,31 @@ app.post('/subscribers/add', (req, res, error) => {
        console.error(error);
       }
          if(response){
+          
+
+                        var transporter = mailHelper.transporter;
+                        var EMAIL_USERNAME = process.env.EMAIL_USERNAME;
+
+                        const mailConfigurations = {
+                            // It should be a string of sender/server email
+                            from: EMAIL_USERNAME,
+                            to: email,
+                            // Subject of Email
+                            subject: 'Jobament Subscription..',
+                            // This would be the text of email body
+                            //  + user +
+                            html: `<h1>Hi! ${email} </h1>, <p>Your account has been added successfully..</p>
+    `
+                        };
+
+                    transporter.sendMail(mailConfigurations, function(error, info) {
+                            if (error) throw Error(error);
+                            if (error) {
+                                console.log('no internet to send mail');
+                            }
+                            console.log('Email Sent Successfully');
+                           
+                        });
 
           res.render(__dirname + "/views/partials/success/newSubscriber.ejs");
             }

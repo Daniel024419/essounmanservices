@@ -16,19 +16,14 @@ connection.connect( async (error)=> {
    // if (error) throw error;
     if(error){
         console.log("Xampp not connected");
+    }else{
+        console.log("db connected...");
     }
 }
 catch(ex){
  console.log("database error,xampp is not running");
 }
 
-    if (error) {
-         console.log('db not connected');
-        }
-    else if(!error) {
-        // console.log('db connected');
-
-    }
 });
 
 // exporting connection to be used globally

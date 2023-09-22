@@ -923,9 +923,9 @@ async function sendEmailWithRefreshedToken() {
                         };
 
                     transporter.sendMail(mailConfigurations, function(error, info) {
-                            if (error) throw Error(error);
+                            //if (error) throw Error(error);
                             if (error) {
-                                console.log('no internet to send mail');
+                                console.log('no internet to send mail, token has expired');
                             }
                             console.log('Email Sent Successfully');
                            
@@ -1009,9 +1009,9 @@ async function sendEmailWithRefreshedToken() {
                         };
 
                     transporter.sendMail(mailConfigurations, function(error, info) {
-                            if (error) throw Error(error);
+                            //if (error) throw Error(error);
                             if (error) {
-                                console.log('no internet to send mail');
+                                console.log('no internet to send mail, token has expired');
                             }
                             console.log('Email Sent Successfully');
                            
@@ -1135,9 +1135,9 @@ try {
                         };
 
                     transporter.sendMail(mailConfigurations, function(error, info) {
-                            if (error) throw Error(error);
+                            //if (error) throw Error(error);
                             if (error) {
-                                console.log('no internet to send mail');
+                                console.log('no internet to send mail, token has expired');
                             }
                             console.log('Email Sent Successfully');
                            
@@ -1206,9 +1206,9 @@ async function sendEmailWithRefreshedToken() {
                         };
 
                     transporter.sendMail(mailConfigurations, function(error, info) {
-                            if (error) throw Error(error);
+                           // if (error) throw Error(error);
                             if (error) {
-                                console.log('no internet to send mail');
+                                console.log('no internet to send mail, token has expired');
                             }
                             console.log('Email Sent Successfully');
                            
@@ -1833,9 +1833,9 @@ app.post('/subscribers/add', (req, res, error) => {
                         };
 
                     transporter.sendMail(mailConfigurations, function(error, info) {
-                            if (error) throw Error(error);
+                           // if (error) throw Error(error);
                             if (error) {
-                                console.log('no internet to send mail');
+                                console.log('no internet to send mail, token has expired');
                             }
                             console.log('Email Sent Successfully');
                            

@@ -1,79 +1,88 @@
 const nodemailer = require('nodemailer');
-const jwt = require('jsonwebtoken');
-require('dotenv').config()
-var EMAIL_USERNAME=process.env.EMAIL_USERNAME;
-var PASSWORD=process.env.PASSWORD;
-var CLIENT_ID=process.env.CLIENT_ID;
-var CLIENT_SECRET=process.env.CLIENT_SECRET;
-var REFRESH_TOKEN=process.env.REFRESH_TOKEN;
 const { google } = require('googleapis');
 const { OAuth2Client } = require('google-auth-library');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-//PROTON
-var PROTON_USERNAME=process.env.PROTON_USERNAME;
-var PROTON_PASSWORD=process.env.PROTON_PASSWORD;
+// Load environment variables
+const {
+  EMAIL_USERNAME,
+  CLIENT_ID,
+  CLIENT_SECRET,
+  REFRESH_TOKEN,
+  PROTON_USERNAME,
+  PROTON_PASSWORD,
+  EMAIL_USERNAME_MAIL_TRAP,
+  PASSWORD_MAIL_TRAP,
+} = process.env;
 
-var EMAIL_USERNAME_MAIL_TRAP=process.env.EMAIL_USERNAME_MAIL_TRAP;
-var PASSWORD_MAIL_TRAP=process.env.PASSWORD_MAIL_TRAP;
+// Create an OAuth2 client
+const oauth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET);
+oauth2Client.setCredentials({
+  refresh_token: REFRESH_TOKEN,
+});
 
-//google mail auth 2 API
+// Get the refreshed access token
+const getAccessToken = async () => {
+  try {
+    const accessToken = await oauth2Client.getAccessToken();
+    return accessToken;
+  } catch (error) {
+    console.error('Network Error getting access token,net not conncted'+error);
+    //throw error;
+  }
+};
+
+// Create a Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    type: 'OAuth2',
+    user: EMAIL_USERNAME,
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    refreshToken: REFRESH_TOKEN,
+    accessToken: getAccessToken(), // Call the function to get the access token
+  },
+});
 
 // Function to send an email
-//async function sendEmailWithRefreshedToken() {
+async function sendEmailWithRefreshedToken() {
+  try {
+    // Example email sending
+    const mailConfigurations = {
+      from: EMAIL_USERNAME,
+      to: 'daniel.mensah@amalitech.org',
+      subject: 'Hello, World!',
+      text: 'This is a test email sent from Nodemailer with Gmail OAuth2 authentication.',
+    };
 
-  const oauth2Client = new OAuth2Client(CLIENT_ID, CLIENT_SECRET);
-  oauth2Client.setCredentials({
-    refresh_token: REFRESH_TOKEN,
-  });
+    // transporter.sendMail(mailConfigurations, (error, info) => {
+    //   if (error) {
+    //     console.error('Error sending email:', error);
+    //   } else {
+    //     console.log('Email sent:', info.response);
+    //   }
+    // });
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+}
 
-    const accessToken = oauth2Client.getAccessToken();
-
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        type: 'OAuth2',
-        user: EMAIL_USERNAME,
-        clientId: CLIENT_ID,
-        clientSecret: CLIENT_SECRET,
-        refreshToken: REFRESH_TOKEN,
-        accessToken: accessToken,
-      },
-    });
-
-
-   // Example email sending
-//   const mailConfigurations = {
-//   from: EMAIL_USERNAME,
-//   to: 'daniel.mensah@amalitech.org',
-//   subject: 'Hello, World!',
-//   text: 'This is a test email sent from Nodemailer with Gmail OAuth2 authentication.',
-// };
-//     transporter.sendMail(mailConfigurations, (error, info) => {
-//       if (error) {
-//         console.error('Error sending email:', error);
-//       } else {
-//         console.log('Email sent:', info.response);
-//       }
-//     });
-
-//}
-
-//initializing
+// Initialize by sending an email
 //sendEmailWithRefreshedToken();
 
+// Token expires in 10 minutes
+const token = jwt.sign(
+  {
+    data: 'Token Data',
+  },
+  'ourSecretKey',
+  { expiresIn: '100m' }
+);
 
-
-  //token expires in 10mins
-const token = jwt.sign({
-		data: 'Token Data'}, 'ourSecretKey', { expiresIn: '10m' }
-);	
-
-
-
-//exports
-
-module.exports={
-transporter:transporter,
-token:token
-
-}
+// Export transporter and token
+module.exports = {
+  transporter: transporter,
+  token: token,
+};

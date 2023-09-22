@@ -19,8 +19,13 @@ app.use('/public/pictures',express.static(path.join(__dirname,'public','pictures
 // dashboard
 app.use('/dashboard/public/css',express.static(path.join(__dirname,'dashboard','public','css')));
  
-
+ var transporter = mailHelper.transporter;
+  var EMAIL_USERNAME = process.env.EMAIL_USERNAME;
 // end
+
+const EventEmitter = require('events'); // Import EventEmitter
+// Increase the event listener limit for Express (change 15 to your desired limit)
+EventEmitter.setMaxListeners(100);
 //view engine setup
 app.set('view engine', 'ejs');
 //app.enaable('setting:view cache');
@@ -901,7 +906,8 @@ try {
            if(response){
             // serving sucess page
 
-
+async function sendEmailWithRefreshedToken() {
+                                try {
 
                         const mailConfigurations = {
                             // It should be a string of sender/server email
@@ -925,6 +931,12 @@ try {
                            
                         });
 
+ } catch (error) {
+                                    console.error('An error occurred:', error);
+                                }
+                            }
+                            // Initialize by sending an email
+                            sendEmailWithRefreshedToken();
 
             res.render(__dirname + "/views/partials/success/userbooking.ejs");
            }
@@ -980,7 +992,8 @@ try {
          if (response) {
 
 
-
+async function sendEmailWithRefreshedToken() {
+                                try {
 
                         const mailConfigurations = {
                             // It should be a string of sender/server email
@@ -1003,6 +1016,14 @@ try {
                             console.log('Email Sent Successfully');
                            
                         });
+                     } catch (error) {
+                                    console.error('An error occurred:', error);
+                                }
+                            }
+
+
+                            // Initialize by sending an email
+                            sendEmailWithRefreshedToken();
 
          }
 
@@ -1097,8 +1118,8 @@ try {
             }
                if(response){
 
-                        var transporter = mailHelper.transporter;
-                        var EMAIL_USERNAME = process.env.EMAIL_USERNAME;
+     async function sendEmailWithRefreshedToken() {
+                                try {
 
                         const mailConfigurations = {
                             // It should be a string of sender/server email
@@ -1121,6 +1142,13 @@ try {
                             console.log('Email Sent Successfully');
                            
                         });
+
+                     } catch (error) {
+                                    console.error('An error occurred:', error);
+                                }
+                            }
+                            // Initialize by sending an email
+                            sendEmailWithRefreshedToken();
 
 
                 // serving sucess page
@@ -1161,11 +1189,9 @@ try {
 
 
           if (response) {
-
-             var transporter = mailHelper.transporter;
-                        var EMAIL_USERNAME = process.env.EMAIL_USERNAME;
-
-                        const mailConfigurations = {
+async function sendEmailWithRefreshedToken() {
+                                try {
+                       const mailConfigurations = {
                             // It should be a string of sender/server email
                             from: EMAIL_USERNAME,
                             to: email,
@@ -1187,6 +1213,13 @@ try {
                             console.log('Email Sent Successfully');
                            
                   });
+
+                     } catch (error) {
+                                    console.error('An error occurred:', error);
+                                }
+                            }
+                            // Initialize by sending an email
+                            sendEmailWithRefreshedToken();
           }
         
         });
@@ -1784,8 +1817,8 @@ app.post('/subscribers/add', (req, res, error) => {
          if(response){
           
 
-                        var transporter = mailHelper.transporter;
-                        var EMAIL_USERNAME = process.env.EMAIL_USERNAME;
+  async function sendEmailWithRefreshedToken() {
+  try {
 
                         const mailConfigurations = {
                             // It should be a string of sender/server email
@@ -1807,6 +1840,12 @@ app.post('/subscribers/add', (req, res, error) => {
                             console.log('Email Sent Successfully');
                            
                         });
+                     } catch (error) {
+                                    console.error('An error occurred:', error);
+                                }
+                            }
+                            // Initialize by sending an email
+         sendEmailWithRefreshedToken();
 
           res.render(__dirname + "/views/partials/success/newSubscriber.ejs");
             }

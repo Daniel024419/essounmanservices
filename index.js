@@ -141,8 +141,12 @@ app.use((req,res,next)=>{
 
 //with middlewares
 app.get('/', (req, res, next) => {
+  connection.connect( function (err) {
+    connection.query( `SELECT * FROM packages ORDER BY max_price DESC`, 
+    function (err,packageData, fields) {
       res.render(__dirname + "/views/index.ejs",
-        {userSession:userSession });
+        {userSession:userSession,packageData });
+    });});
 
  });
 
